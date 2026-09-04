@@ -2,7 +2,7 @@ class Pixu < Formula
   desc "Terminal image viewer - render images directly in your terminal"
   homepage "https://github.com/xvoland/pixu"
   url "https://github.com/xvoland/pixu/archive/refs/tags/v1.3.6.tar.gz"
-  sha256 "03c1c8ec0fc89c3d6dbc6fe6e0a59469047c813e9ae9e5f3b22d08abf59fdb14"
+  sha256 "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed"
   version "1.3.6"
   license "Apache-2.0"
 
