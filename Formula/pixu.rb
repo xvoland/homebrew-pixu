@@ -11,6 +11,14 @@ class Pixu < Formula
   def install
     ldflags = "-s -w -X main.version=#{version} -X main.buildSource=#{version}"
     system "go", "build", "-ldflags", ldflags, "-o", bin/"pixu", "."
+    # Ad-hoc sign the binary on macOS (no Apple Developer cert needed) so that
+    # Gatekeeper accepts it without the "developer cannot be verified" prompt
+    # and users no longer need `xattr -dr com.apple.quarantine`.
+    if OS.mac?
+      system "codesign", "--force", "--timestamp=none", "--sign", "-", bin/"pixu"
+      # Strip any quarantine attribute inherited from the downloaded source.
+      system "xattr", "-dr", "com.apple.quarantine", bin/"pixu" rescue nil
+    end
   end
 
   test do
